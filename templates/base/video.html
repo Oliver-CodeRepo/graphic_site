@@ -9,17 +9,20 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/work.css' %}">
 
+
 <div class="grid-wrapper container">
-    {% for item in v %}
-        {% video item.video as my_video %}
-            <a class='{% if forloop.counter|divisibleby:3 %}tall{% else %}big{% endif %}' href="{% url 'base:video-details' item.id %}">
-                {{ item.title }} <br>
-                <img src="{{ my_video.thumbnail }}"  class="">
-            </a>
-            <br>
-            {% comment %} {% video my_video 'tiny' %} {% endcomment %}
-        {% endvideo %}
-    {% endfor %}   
+    {% if v %}
+        {% for item in v %}
+            {% video item.video as my_video %}
+                <a class='{% if forloop.counter|divisibleby:3 %}tall{% else %}big{% endif %}' href="{% url 'base:video-details' item.id %}">
+                    {{ item.title }} <br>
+                    <img src="{{ my_video.thumbnail }}"  class="">
+                </a>
+                <br>
+                {% comment %} {% video my_video 'tiny' %} {% endcomment %}
+            {% endvideo %}
+        {% endfor %}   
+    {% endif %}
 </div>
 
 {% endblock %}
