@@ -8,18 +8,6 @@
     {% block carousel %}
         {% include 'base/partials/carousel.html' %}
     {% endblock carousel %}
-
-    <div class="row w-100 mt-5">
-        {% for item in v %}
-            <div class="col-md-4">
-            {% video item.video as my_video %}
-                <img src="{{ my_video.thumbnail }}" width=40 height=40 class="rounded-circle">
-                {{ item.title }} 
-                <br>
-                {% comment %} {% video my_video 'tiny' %} {% endcomment %}
-            {% endvideo %}
-            </div>
-        {% endfor %}    
-    </div>
+    
     {% endblock content %}
 {% endcache %}

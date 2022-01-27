@@ -14,16 +14,16 @@
     perspective: 600px;
     display: grid;
     grid-template-columns: repeat(3, 150px);
-    grid-template-rows: repeat(3, 150px);
+    grid-template-rows: repeat(6, 150px);
     grid-gap: 20px;
     max-width: 480px;
-    transform: rotate(45deg);
+    transform: rotate(0deg);
 }
 .grid div {
     background: rgba(255, 255, 255, .15);
     border: 1px solid rgba(255, 255, 255, .25);
     padding: 20px;
-    color: transparent;
+    color: blue;
     box-shadow: 30px 30px 30px -20px rgba(0, 0, 0, .6);
     border-radius: 2px;
 }
