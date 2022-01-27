@@ -11,7 +11,7 @@
 
 
 <div class="grid-wrapper container">
-    {% if v %}
+    {% if v|length > 0 %}
         {% for item in v %}
             {% video item.video as my_video %}
                 <a class='{% if forloop.counter|divisibleby:3 %}tall{% else %}big{% endif %}' href="{% url 'base:video-details' item.id %}">
