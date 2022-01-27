@@ -14,8 +14,8 @@ def videoView(request):
     return render(request, 'base/video.html', context)
 
 
-def videoDetailView(request, slug):
-    v = Video.objects.filter(slug=slug).first()
+def videoDetailView(request, id):
+    v = Video.objects.filter(id=id).first()
     context = {'v':v}
     return render(request, 'base/video_details.html', context)
 

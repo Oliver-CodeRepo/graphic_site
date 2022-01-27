@@ -17,12 +17,12 @@ class Video(models.Model):
     title = models.CharField(max_length=200)
     video = EmbedVideoField()
     details = models.TextField()
-    slug = models.SlugField(max_length=255, unique=True)    
+    # slug = models.SlugField(max_length=255, unique=True)    
     
-    def save(self, *args, **kwargs):
-        super(Video, self).save(*args, **kwargs)
-        self.slug = slugify(rand_slug() + "-" + self.title)
-        super(Video, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     super(Video, self).save(*args, **kwargs)
+    #     self.slug = slugify(rand_slug() + "-" + self.title)
+    #     super(Video, self).save(*args, **kwargs)
     
     def __str__(self):
         return self.title if self.title else 'video_{}'.format(self.id)
