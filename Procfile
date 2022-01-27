@@ -1,1 +1,1 @@
-web: gunicorn Graphics.wsgi
+web: gunicorn Graphics.wsgi --log-file -
