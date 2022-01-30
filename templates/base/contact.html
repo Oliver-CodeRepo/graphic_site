@@ -5,20 +5,25 @@
 
 <link rel="stylesheet" href="{% static 'css/contact.css' %}">
 
-<section id="contact container">
-    <div class='header_wrapper mb-4'>
+<section id="contact container" >
+    <div class='header_wrapper '>
         <h1 class="section-header">Contact</h1>
     </div>
     
-    <div class="contact-wrapper">
+    <div class="contact-wrapper" style="margin:70px auto">
     
     <!-- Left contact page --> 
       
-      <form id="contact-form" class="form-horizontal" role="form">
+      <form id="contact-form " class="form-horizontal" role="form" method="post" action="{% url 'base:send_message' %}">
+        {% for msg in messages %}
+          {{ msg }}
+        {% endfor %}
+        {% csrf_token %}
+        {{ form.errors }}
          
         <div class="form-group">
           <div class="col-sm-12">
-            <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="" required>
+            <input type="text" class="form-control" id="name" placeholder="NAME" name="sender" value="" required>
           </div>
         </div>
   
@@ -27,8 +32,14 @@
             <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="" required>
           </div>
         </div>
+        
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" class="form-control" id="name" placeholder="SUBJECT" name="subject" value="" required>
+          </div>
+        </div>
   
-        <textarea class="form-control" rows="8" placeholder="MESSAGE" name="message" required></textarea>
+        <textarea class="form-control" rows="8" placeholder="MESSAGE" name="body" required></textarea>
         
         <button class="btn btn-primary send-button" id="submit" type="submit" value="SEND">
           <div class="alt-send-button">
@@ -77,7 +88,7 @@
     
   </section>  
     
-    <script>
+    <!-- <script>
         document.querySelector('#contact-form').addEventListener('submit', (e) => {
             e.preventDefault();
             e.target.elements.name.value = '';
@@ -85,6 +96,6 @@
             e.target.elements.message.value = '';
           });
         
-    </script>
+    </script> -->
 
 {% endblock content %}

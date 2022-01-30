@@ -1,35 +1,49 @@
-<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light border-bottom   ">
-    <div class="container-fluid nav-justified">
-      <a class="navbar-brand w-25" href="{% url 'base:index' %}">Logo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item px-3">
-            <a class="nav-link text-primary active" aria-current="page" href="{% url 'base:index' %}">Home</a>
-          </li>
-          <li class="nav-item px-3">
-            <a class="nav-link text-primary active" aria-current="page" href="{% url 'base:works' %}">Collage</a>
-          </li>
-          <li class="nav-item px-3">
-            <a class="nav-link text-primary active" aria-current="page" href="{% url 'base:videos' %}">Video</a>
-          </li>
-          <li class="nav-item px-3">
-            <a class="nav-link text-primary active" aria-current="page" href="{% url 'base:clients' %}">Clients</a>
-          </li>
-          <li class="nav-item px-3">
-            <a class="nav-link text-primary active" aria-current="page" href="{% url 'base:about' %}">About</a>
-          </li>
-          <li class="nav-item px-3">
-            <a class="nav-link text-primary active" aria-current="page" href="{% url 'base:contact' %}">Contact</a>
-          </li>
-        </ul>
-        <div class="social">
-            <i class="px-2 text-primary fab fa-facebook" aria-hidden="true"></i>
-            <i class="px-2 text-primary fab fa-twitter" aria-hidden="true"></i>
-            <i class="px-2 text-danger fab fa-youtube    " aria-hidden="true"></i>
+<nav id="mainNav" class="navbar navbar navbar-dark navbar-fixed-top" style='z-index:20'>
+        <div class="container">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="../../static/assets/img/logo.png" alt="Logo" width='40' height='40'>
+                    </a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+						<li>
+                            <a class="page-scroll" href="{% url 'base:index' %}">Home</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="{% url 'base:about' %}">About</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#Services">Services</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="{% url 'base:works' %}">Collage</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="{% url 'base:videos' %}">Videos</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="{% url 'base:contact' %}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- =============== navbar-collapse =============== -->
+
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
+        <!-- =============== container-fluid =============== -->
+    </nav>
+
+
+
+

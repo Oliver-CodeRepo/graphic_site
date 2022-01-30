@@ -1,5 +1,5 @@
 from django.urls import path
-from base.views import aboutView, clientView, contactView, index, videoDetailView, videoView, workView
+from base.views import aboutView, clientView, contactView, index, send_message, videoDetailView, videoView, workView
 
 app_name = 'base'
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('clients', clientView, name='clients'),
     path('about', aboutView, name='about'),
     path('contact', contactView, name='contact'),
+    path('send-message', send_message, name='send_message'),
 ]

@@ -23,3 +23,19 @@ class Video(models.Model):
     
     class Meta:
         verbose_name_plural = 'Videos'
+        
+
+
+class CustomerMessage(models.Model):
+    """ Messages model """
+    
+    email = models.EmailField()
+    sender = models.CharField(max_length=100) 
+    subject = models.CharField(max_length=100)
+    body = models.TextField()
+    created_on = models.DateField(auto_now_add=True)
+    
+    def __str__(self):
+        return 'From: {} on subject: {}'.format(str(self.email), self.subject)
+    
+    
