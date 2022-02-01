@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from base.forms import MessageForm
 from base.globals import send_html_email
@@ -54,6 +55,7 @@ def send_message(request):
             }
             form.save()
             print('saved')
+            messages.info(request, 'Your concern/question was sent successfully, we will reach you as soon as possible')
             send_mail = send_html_email([to_list, ], 'Message Reception Acknowledgement', 'emails/message.html', email_context )    
             print('message was sent', send_mail)        
             if send_mail:
@@ -66,7 +68,10 @@ def send_message(request):
                 
         else:
             print('failed', form.errors)
-            return redirect('base:contact')
+            messages.error(request, form.errors)
+            form = MessageForm()
+            
+    return render(request, 'base/contact.html', context={'form':form})
     
     
         

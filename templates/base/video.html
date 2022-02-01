@@ -16,8 +16,8 @@
     {% if v|length > 0 %}
         {% for item in v %}
             {% video item.video as my_video %}
-                <a class='{% if forloop.counter|divisibleby:4s %}wide{% else %}big{% endif %}' hef="{% url 'base:video-details' item.id %}">
-                    {{ item.title }} <br>
+                <a class='{% if forloop.counter|divisibleby:2 %}big{% else %}big{% endif %}' hef="{% url 'base:video-details' item.id %}">
+                    <h3 class='text-primary'>{{ item.title }}</h3> 
                     <img src="{{ my_video.thumbnail }}"  class="">
                 </a>
                 <br>

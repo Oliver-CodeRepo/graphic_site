@@ -16,7 +16,7 @@
       
       <form id="contact-form " class="form-horizontal" role="form" method="post" action="{% url 'base:send_message' %}">
         {% for msg in messages %}
-          {{ msg }}
+          <p class="text-success">{{ msg }}</p>
         {% endfor %}
         {% csrf_token %}
         {{ form.errors }}
@@ -88,14 +88,5 @@
     
   </section>  
     
-    <!-- <script>
-        document.querySelector('#contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            e.target.elements.name.value = '';
-            e.target.elements.email.value = '';
-            e.target.elements.message.value = '';
-          });
-        
-    </script> -->
 
 {% endblock content %}
