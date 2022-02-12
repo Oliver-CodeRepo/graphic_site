@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load instagram_client %}
 {% load cache %}
 
 {% cache 500 content %}
@@ -11,7 +12,22 @@
 <div class="grid-wrapper container mt-3">
 	<!-- =============== Gallery =============== -->
 <section id="Gallery" class="wow flipInX animated" data-wow-delay=".5s">
-			
+
+
+<!-- <h1> {{instagram_profile_name}} Instagram Feed</h1>
+<div id="django_recent_media_wall">
+    {% instagram_user_recent_media instagram_profile_name %}
+    {% for media in recent_media %}
+        <div class="django_instagram_media_wall_item">
+            <a href="//instagram.com/p/{{ media.shortcode }}" target="_blank">
+                <img src="{{ media.thumbnail_src }}" width="100" />
+                <span>{{ media.edge_media_to_caption.edges.0.node.text }}</span>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+<p>Got from instagram</p> -->
+<!-- 			
 	<div class="big-demo go-wide" data-js-module="filtering-demo">
 	<div class="container">            
             <div class="row">
@@ -135,7 +151,7 @@
 		</div>	
 		</a>
       </div>      
-  </div>
+  </div> -->
 
  
 </div>

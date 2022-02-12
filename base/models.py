@@ -1,22 +1,21 @@
 from django.db import models
 from  embed_video.fields  import  EmbedVideoField
-import string
-import random
+import uuid
+from ckeditor.fields import RichTextField
 
-# from django.utils.text import slugify
-
-
-# def rand_slug():
-#     return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(6))
-
-
+SITES = (
+    ('Youtube','Youtube'),
+    ('Vimeo','Vimeo'),
+)
 
 # Create your models here.
 class Video(models.Model):
     """ video model """
+    uuid = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
     title = models.CharField(max_length=200)
-    video = EmbedVideoField()
-    details = models.TextField()
+    video_url = EmbedVideoField()
+    site_name = models.CharField(max_length=50, choices=SITES)
+    details = RichTextField(blank = True, null=True)
         
     def __str__(self):
         return self.title if self.title else 'video_{}'.format(self.id)

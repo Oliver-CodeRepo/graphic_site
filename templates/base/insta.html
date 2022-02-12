@@ -1,0 +1,45 @@
+
+{% extends 'base.html' %}
+{% load instagram_client %}
+{% load static instagram_client %}
+{% load static %}
+
+{% block content %}
+
+<section id="contact mt-4" >
+
+{% if recent_media %}
+    <div class="django_instagram">
+        <ul class="slider">
+            {% for media in recent_media %}
+            <li class="entry">
+                <a href="{{ media.display_src }}" title="{{ media.caption }}" target="_blank">
+                    <img src="{{ media.thumbnail_src }}"/>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<link href="{% static 'django_instagram/css/slider.css' %}" rel="stylesheet" type="text/css"/>
+<script src="{% static 'django_instagram/js/slider.js' %}"></script>
+    <div id="django_recent_media_wall" class="container ">
+        <div class="row" style="margin:70px auto">
+        <h3> @{{instagram_profile_name}} Instagram Feed</h3>
+        {% instagram_user_recent_media instagram_profile_name %}
+        {% for media in recent_media %}
+            <div class="django_instagram_media_wall_item col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <a href="//instagram.com/p/{{ media.shortcode }}" target="_blank">
+                    {{ media.display_src }}
+                    <img src="{{ media.thumbnail_src }}" width="100%" height="100%"  style="object-fit:contain">
+                    <figcaption>{{ media.edge_media_to_caption.edges.0.node.text }}</figcaption>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</section>
+<p>Got from instagram</p>
+
+{% endblock %}

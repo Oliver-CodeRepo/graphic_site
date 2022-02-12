@@ -4,17 +4,178 @@
 
 {% block content %}
 
-<div class="container" style='margin: 70px auto'>
-    <div class="card">
-        <div class="card-body">
-            <h1>{{v.title}}</h1>
-        </div>
-    </div>
-    <div class="card" >
-        <div class="card-body">
-            <h1>{% video v.video 'large' %}</h1>
-        </div>
-    </div>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;800&display=swap");
+
+body,
+html {
+	background: #fff;
+	padding: 0;
+	margin: 0;
+	padding-bottom: 6rem;
+	font-family: "Montserrat", sans-serif;
+	width: 100%;
+	color: #000;
+}
+.container_ {
+	padding-bottom: 3rem;
+}
+img {
+	-webkit-box-reflect: below 5px
+		linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.4));
+	-webkit-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+.container_ img:hover {
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+}
+.last {
+	margin-top: 6.5rem;
+}
+.featured_wrapper {
+	position: relative;
+}
+.featured_wrapper img {
+	width: 100%;
+	width: 100%;
+	height: 350px;
+	-o-object-fit: cover;
+	object-fit: cover;
+	-o-object-position: top;
+	object-position: top;
+}
+.title_wrapper {
+	position: absolute;
+	width: 100%;
+	left: 2rem;
+	bottom: 2rem;
+	padding: 20px 40px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.title_wrapper h1 {
+	width: 70%;
+}
+button {
+	background: #f40612 !important;
+	color: #fff !important;
+	font-size: 18px;
+	padding: 0.5rem 3rem;
+	outline: none;
+	border: 0 !important;
+}
+@media (max-width: 768px) {
+	.title_wrapper {
+		text-align: center;
+		left: 0;
+	}
+	.title_wrapper h1 {
+		font-size: 32px !important;
+		width: 100%;
+	}
+	.container_ {
+		padding: 20px;
+	}
+}
+@media (max-width: 480px) {
+	.column.is-one-quarter img {
+		width: 100%;
+		margin-bottom: 7rem;
+	}
+}
+
+</style>
+
+
+<div class="row w-100 m-auto" style='margin: 80px auto'>
+    <div class="col-lg-12 col-md-6 col-sm-12 d-flex justify-content-between">
+
+        <!-- #CodePenChallenge: Reflections -->
+<div class="top">
+	<div class="columns">
+		<div class="column is-full featured_wrapper p-0">
+			{% comment %} <img src="https://raw.githubusercontent.com/brixiobodino/coffeholic/main/banner.jpg" class="featured"> {% endcomment %}
+			{% video v.video_url '1500x550' %}
+			<div class="title_wrapper">
+				{% comment %} <span class="has-text-white">Trending Today</span>
+				<h1 class="title is-2 has-text-white">{{v.title}}</h1>
+				<button class="button is-medium">Watch It Now</button> {% endcomment %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container_ " style="border-bottom: 2px solid black">
+	<div class="container pb-4">
+	<div class="row">
+		<div class="card text-center">
+		  <div class="card-header">
+			<ul class="nav nav-tabs card-header-tabs">
+			  <li class="nav-item">
+				<a class="nav-link active" href="">Description</a>
+			  </li>
+			</ul>
+		  </div>
+		  <div class="card-body text-left">
+			<h4 class="card-title">{{v.title}}</h4>
+			<p class="card-text">{{v.details|safe}}</p>
+		  </div>
+		</div>
+	</div>
+	</div>
+	<hr style="border-bottom: 2px solid black">
+	<div class="columns is-multiline p-0 last row ">
+		<div class="column is-full col-sm-12 border-top">
+			<h2 class="has-text-white">Related Videos</h2>
+		</div>
+		{% if related_videos|length > 0 %}
+			{% for item in related_videos %}
+				{% video item.video_url as my_video %}
+					{% if item.video_url != v.video_url %}
+						<div class="column col-md-3 col-sm-12">
+							<a href="{% url 'base:video-details' item.uuid %}">
+								<li class="cardy">
+									<img src='{{ my_video.thumbnail }}' alt='' width="100%">
+								</li>
+							</a>
+						</div>
+					{% endif %}
+				{% endvideo %}   
+			{% endfor %}   
+		{% endif %}
+		</div>
+	</div>
+</div>
+
+        <!-- <div class="container" >     -->
+            <!-- <div class="card">
+                <div class="card-body">
+                    <h2>{{v.title}}</h2>
+                </div>
+            </div>
+            <div class="card" >
+                <div class="card-body">
+                    <h1>{% video v.video_url '1500x800' %}</h1>
+                </div>
+            </div> -->
+        <!-- </div> -->
+        <!-- <div class="card bg-primary text-white">
+            <div class="card-header" style="padding:20px">
+                <h2 class=''>Video details</h2>
+            </div>
+            <div class="card-body">
+                <h5>{{v.details}}</h5>
+            </div>
+        </div> -->
+
+    <!-- </div> -->
+    <!-- <div class="col-lg-3 col-md-6 col-sm-12 ">
+        <
+    </div> -->
 </div>
 
 {% endblock content %}

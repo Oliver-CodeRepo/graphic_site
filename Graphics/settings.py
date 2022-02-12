@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'embed_video',
+    'django_instagram',
     'base',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -146,6 +148,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+EMBED_VIDEO_BACKENDS = (
+    'embed_video.backends.YoutubeBackend',
+    'embed_video.backends.VimeoBackend',
+    'embed_video.backends.SoundCloudBackend',
+    # 'base.backends.CustomBackend',
+)
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
